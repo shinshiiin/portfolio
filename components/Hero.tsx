@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Hero() {
-  const texts = [
-    "WP Theme Development",
-    "WP Plugin Development",
-    "Shopify Development",
-    "Custom Liquid",
-  ];
+  const texts = ["WP Theme", "WP Plugin", "Shopify"];
 
   const [index, setIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
@@ -27,60 +22,87 @@ export default function Hero() {
         setDisplayedText("");
         setCharIndex(0);
         setIndex((prev) => (prev + 1) % texts.length);
-      }, 1500);
+      }, 5000);
       return () => clearTimeout(timeout);
     }
   }, [charIndex, index]);
 
   return (
-    <section className="relative min-h-screen md:h-screen w-full flex flex-col md:flex-row items-center bg-black text-white overflow-hidden px-6 md:px-12 lg:px-20">
-
+    <section id="hero" className="flex flex-col gap-[10px] md:flex-row items-center bg-bg px-6 pt-14 md:px-12 md:py-18 border-b border-line">
       {/* LEFT SIDE */}
-      <div className="relative z-10 w-full md:w-1/2 space-y-4 md:space-y-5 mt-16 md:mt-0 text-center lg:text-left">
-
+      <div className="flex flex-col md:w-1/2 gap-[18px] text-text pb-[10px]">
         {/* Hi line with orange dash */}
-        <p className="text-lg md:text-2xl flex items-center gap-3 font-poppins md:flex-row flex-col-reverse justify-center md:justify-start">
-          <span className="inline-block w-8 h-[3px] bg-[#E67E22] rounded-full" />
-          Hi, I am Sheene.
+        <p className="text-sm text-muted flex items-center gap-[10px]">
+          <span className="inline-block w-[22px] h-0.5 bg-accent rounded-full" />
+          Hi, I'm Sheene.
         </p>
 
         {/* Typing headline */}
-        <h1 className="font-poppins text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold min-h-[100px] md:min-h-[140px]">
+        <h1 className="text-4xl md:text-[56px] font-bold">
           I know
           <br />
-          <span className="text-[#E67E22]">{displayedText}</span>
-          <span className="text-[#FFFFFF] animate-pulse">|</span>
+          <span className="text-accent">{displayedText}</span>
+          <span className="cursor-blink [animation-duration:0.6s]">|</span>
+          <br />
+          <span className="text-accent">Development</span>
         </h1>
 
+        {/* Shipping */}
+        <div className="text-muted text-sm max-w-sm md:max-w-lg">
+          Right now shipping:
+          <ul className="text-text list-disc list-inside pl-4">
+            <br />
+            <li>WordPress themes</li>
+            <li>WordPress plugins</li>
+            <li>Shopify stores</li>
+            <li>Custom liquid sections</li>
+            <li>Next.js builds</li>
+          </ul>
+        </div>
+
         {/* Subtext */}
-        <p className="text-gray-400 text-sm md:text-base font-poppins max-w-sm md:max-w-lg">
-          I build high-performing, responsive and user-friendly websites that help businesses grow.
+        <p className="text-muted text-sm max-w-sm md:max-w-lg pt-10">
+          WordPress theming, Shopify builds, and custom Next.js sites —
+          engineered for speed, security, and revenue, not just good looks.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex gap-3 md:gap-4 pt-2 justify-center md:justify-start">
-          <button className="px-4 md:px-6 py-2.5 md:py-3 bg-[#E67E22] text-black font-poppins rounded-lg text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-orange-400 transition-colors duration-200">
-            Show Profile
+        <div className="flex gap-3 md:gap-4 pt-2">
+          <button className="flex items-center gap-2 px-[22px] py-[13px] rounded-[7px] bg-accent text-black font-bold text-[13px]">
+            View my work
+            <svg
+              aria-hidden="true"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.4"
+            >
+              <path d="M7 17L17 7"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
           </button>
-          <button className="px-4 md:px-6 py-2.5 md:py-3 rounded-lg border border-white text-white text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-200">
-            Know More
+          <button className="px-[22px] py-[13px] rounded-[7px] border border-line text-text text-[13px] font-bold">
+            Start a project
           </button>
         </div>
       </div>
 
       {/* RIGHT SIDE — Hero image */}
-      <div className="relative w-full md:w-1/2 flex-1 md:h-full flex items-center justify-center">
+      <div
+        className="relative w-full md:w-1/2 h-[420px] md:flex-1 md:h-[500px] border-b border-line
+      bg-[radial-gradient(circle,rgba(255,90,54,0.35)_25%,rgba(255,90,54,0.12)_48%,rgba(153,153,153,0)_66%)]"
+      >
         <Image
           src="/images/Hero.webp"
           alt="Hero Image"
           fill
-          sizes="60vw"
-          className="object-contain object-right"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-contain"
           priority
         />
       </div>
-
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#0D0D0F] z-20" />
     </section>
   );
 }
