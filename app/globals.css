@@ -1,40 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b0d10;
+  --surface: #14171b;
+  --surface-2: #1b1f24;
+  --text: #f2f1ed;
+  --muted: #9aa0a6;
+  --accent: #ff5a36;
+  --accent-soft: rgba(255, 90, 54, 0.12);
+  --success: #35d399;
+  --line: rgba(255, 255, 255, 0.08);
+  --radius: 10px;
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
 }
+/* :root[data-theme="light"] {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --surface-2: #efede7;
+  --text: #15181b;
+  --muted: #63696f;
+  --line: rgba(0, 0, 0, 0.09);
+} */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Colors */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-line: var(--line);
 
+  /* Fonts */
   --font-poppins: "Poppins", sans-serif;
   --font-syne: "Syne", sans-serif;
   --font-inter: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--text);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  /* font-family: "Syne", sans-serif; */
-}
 
 @keyframes fadeInLeft {
   from {
@@ -50,4 +67,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fadeInLeft {
   animation: fadeInLeft 1s ease forwards;
+}
+
+@keyframes cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
 }

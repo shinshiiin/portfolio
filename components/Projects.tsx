@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
-const categories = ["All", "WordPress", "Shopify", "Web Design", "Plugin", "Theme"];
+const categories = ["All", "WordPress", "Shopify", "Web Design", "Plugin"];
 
 const projects = [
   {
@@ -12,49 +12,49 @@ const projects = [
     category: "Shopify",
     type: "Shopify Store",
     image: "/images/projects/selori.png",
-    link: "#",
+    link: "https://tryselori.com/",
   },
   {
     name: "Nubyn Store",
     category: "Shopify",
     type: "Shopify Store",
     image: "/images/projects/nubyn.png",
-    link: "#",
+    link: "https://nubynbeauty.com/",
   },
   {
     name: "Liaison Store",
     category: "Shopify",
     type: "Shopify Store",
     image: "/images/projects/liaison.png",
-    link: "#",
+    link: "https://herliaison.com/",
   },
   {
     name: "SuperiorMane",
     category: "Shopify",
     type: "Shopify Store",
     image: "/images/projects/superiormane.png",
-    link: "#",
+    link: "https://thesuperiormane.com/",
   },
   {
     name: "Ashoorilaw",
     category: "WordPress",
     type: "WordPress Website",
     image: "/images/projects/ashoorilaw.png",
-    link: "#",
+    link: "https://www.ashoorilaw.com/",
   },
   {
     name: "Triple Layer Security",
     category: "Plugin",
     type: "WordPress Plugin",
     image: "/images/projects/triplelayer.png",
-    link: "#",
+    link: "https://github.com/shinshiiin/3-layer-security.git",
   },
   {
     name: "EON Studios",
     category: "Web Design",
     type: "Figma Landing Page",
     image: "/images/projects/eon.png",
-    link: "#",
+    link: "https://eon-studios-static.vercel.app/",
   },
 ];
 
@@ -65,20 +65,20 @@ export default function Projects() {
     active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
-    <section className="w-full bg-[#0D0D0F] py-16 px-6 md:px-20">
+    <section id="projects" className="w-full py-12 px-6 md:py-18 md:px-12">
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-12">
 
         {/* Left — Title */}
         <div>
-          <p className="text-[#E67E22] font-poppins font-semibold text-sm md:text-base mb-1">
-            My Portfolio
+          <p className="text-accent text-xs md:text-base mb-2">
+            Portfolio
           </p>
-          <h2 className="text-white text-4xl md:text-5xl font-bold font-poppins">
-            My Projects
+          <h2 className="text-text text-3xl md:text-[34px] font-bold">
+            Selected Projects
           </h2>
-          <div className="mt-3 w-16 h-[3px] bg-[#E67E22] rounded-full" />
+          <div className="mt-3 w-11 h-[3px] bg-accent rounded-full" />
         </div>
 
         {/* Right — Filter Buttons */}
@@ -87,10 +87,10 @@ export default function Projects() {
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`px-4 md:px-5 py-2 rounded-lg text-sm font-poppins font-semibold transition-colors duration-200 ${
+              className={`px-4 md:px-5 py-2 rounded-lg text-xs transition-colors duration-200 ${
                 active === cat
-                  ? "bg-[#E67E22] text-black"
-                  : "bg-transparent border border-gray-600 text-white hover:border-[#E67E22] hover:text-[#E67E22]"
+                  ? "bg-accent text-black"
+                  : "bg-transparent border border-line text-text hover:border-accent hover:text-accent  "
               }`}
             >
               {cat}
@@ -124,7 +124,7 @@ function ProjectCard({
     <a href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group rounded-xl overflow-hidden bg-[#1C1C1C] hover:ring-1 hover:ring-[#E67E22] transition-all duration-200"
+      className="group rounded-xl overflow-hidden bg-surface hover:ring-1 hover:ring-accent transition-all duration-200"
     >
       {/* Screenshot */}
       <div className="relative w-full h-[200px] overflow-hidden">
@@ -140,14 +140,14 @@ function ProjectCard({
       {/* Info */}
       <div className="flex items-center justify-between px-4 py-4">
         <div>
-          <p className="text-white font-poppins font-bold text-base">
+          <p className="text-text font-bold text-sm">
             {project.name}
           </p>
-          <p className="text-gray-400 font-poppins text-sm mt-0.5">
+          <p className="text-muted text-xs mt-0.5">
             {project.type}
           </p>
         </div>
-        <ArrowUpRight className="text-white w-5 h-5 shrink-0 group-hover:text-[#E67E22] transition-colors duration-200" />
+        <ArrowUpRight className="text-text w-5 h-5 shrink-0 group-hover:text-accent transition-colors duration-200" />
       </div>
     </a>
   );
